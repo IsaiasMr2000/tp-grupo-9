@@ -1,4 +1,4 @@
-# 🍕 PedidosYa App - Proyecto Universitario
+# 🍕 PedidosFast App - Proyecto Universitario
 
 ## 👥 Integrantes del Equipo
 - Alejandro Miranda - Dueño del repositorio
