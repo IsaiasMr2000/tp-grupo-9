@@ -1,5 +1,6 @@
 <ion-header class="ion-no-border">
-  <div class="custom-header">
+  <!-- Header compacto con diseño igual al inicio -->
+  <div class="custom-header custom-header--small">
     <h2>Carrito</h2>
     <p *ngIf="cartItems.length > 0">{{ getItemsCount() }} items en tu carrito</p>
     <p *ngIf="cartItems.length === 0">Tu carrito está vacío</p>
