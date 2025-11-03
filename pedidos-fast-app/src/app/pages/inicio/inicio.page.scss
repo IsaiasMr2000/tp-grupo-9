@@ -1,23 +1,61 @@
+/* ----------------------
+   HEADER (mejoras en el diseño)
+   ---------------------- */
 .custom-header {
   background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
   color: white;
-  padding: 60px 20px 30px;
+  padding: calc(18px + var(--ion-safe-area-top)) 20px 14px; /* más compacto */
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* sombra sutil */
+  border-radius: 0; /* bordes rectos */
 
   h2 {
-    font-size: 28px;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
     color: white;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+    /* emoji de tenedor */
+    &::after {
+      content: "🍴";
+      font-size: 20px;
+      transform: translateY(1px);
+    }
   }
 
   p {
-    opacity: 0.9;
-    font-size: 14px;
-    color: white;
+    opacity: 0.95;
+    font-size: 13px;
+    color: #fff;
+    margin-top: 3px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
   }
 }
 
-// Search Bar
+/* Variante compacta opcional */
+.custom-header--small {
+  padding: calc(10px + var(--ion-safe-area-top)) 16px 8px;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+/* ----------------------
+   Search Bar
+-----------------------*/
 .search-container {
   padding: 20px;
   background: white;
@@ -49,7 +87,9 @@
   }
 }
 
-// Categories
+/* ----------------------
+   Categories
+-----------------------*/
 .categories-scroll {
   display: flex;
   gap: 10px;
@@ -97,7 +137,9 @@
   }
 }
 
-// Restaurants List
+/* ----------------------
+   Restaurants List
+-----------------------*/
 .restaurants-list {
   padding: 20px;
   display: flex;
@@ -188,7 +230,9 @@
   }
 }
 
-// Empty State
+/* ----------------------
+   Empty State
+-----------------------*/
 .empty-state {
   text-align: center;
   padding: 60px 20px;
