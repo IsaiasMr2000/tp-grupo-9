@@ -1,0 +1,161 @@
+/* ----------------------
+   FONDO GENERAL (gris como Inicio y Carrito)
+-----------------------*/
+ion-content {
+  --background: #f5f5f5;
+}
+
+/* ----------------------
+   HEADER (compacto, mismo diseño unificado)
+-----------------------*/
+.custom-header {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+  color: white;
+  padding: 60px 20px 30px;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  p {
+    opacity: 0.9;
+    font-size: 14px;
+  }
+}
+
+/* Versión compacta, usada en esta página */
+.custom-header--small {
+  padding: calc(10px + var(--ion-safe-area-top)) 16px 8px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    margin-top: 3px;
+    opacity: 0.95;
+  }
+}
+
+/* ----------------------
+   PERFIL: CONTENIDO PRINCIPAL
+-----------------------*/
+.profile-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Encabezado del perfil (avatar, nombre, email) */
+.profile-header {
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFB088 0%, #FF8C42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-size: 36px;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 8px 0 2px 0;
+}
+
+.profile-email {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+/* ----------------------
+   MENÚ DE OPCIONES
+-----------------------*/
+.profile-menu {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: #f9f9f9;
+  }
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-icon {
+  font-size: 20px;
+  color: #FF6B35;
+}
+
+.menu-label {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.menu-arrow {
+  font-size: 18px;
+  color: #aaa;
+}
+
+/* ----------------------
+   BOTÓN DE CERRAR SESIÓN
+-----------------------*/
+.btn-logout {
+  --border-color: #FF6B35;
+  --color: #FF6B35;
+  --border-radius: 25px;
+  font-weight: 600;
+  height: 45px;
+}
+
+/* ----------------------
+   INFO DE LA APP
+-----------------------*/
+.app-info {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin-top: 10px;
+}
