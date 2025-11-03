@@ -1,13 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <!-- Header compacto unificado -->
+  <div class="custom-header custom-header--small">
+    <h2>Perfil</h2>
+    <p>Tu información personal</p>
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="profile-content">
+    <!-- Perfil: avatar e info -->
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <span>{{ getUserInitial() }}</span>
+      </div>
+      <h3 class="profile-name">{{ user?.name || 'Usuario' }}</h3>
+      <p class="profile-email">{{ user?.email || 'email@example.com' }}</p>
+    </div>
+
+    <!-- Menú de opciones -->
+    <div class="profile-menu">
+      <div 
+        *ngFor="let item of menuItems" 
+        class="menu-item"
+        (click)="$event.preventDefault()"
+      >
+        <div class="menu-item-left">
+          <ion-icon [name]="item.icon" class="menu-icon"></ion-icon>
+          <span class="menu-label">{{ item.label }}</span>
+        </div>
+        <ion-icon name="chevron-forward-outline" class="menu-arrow"></ion-icon>
+      </div>
+    </div>
+
+    <!-- Botón de cerrar sesión -->
+    <ion-button 
+      expand="block" 
+      fill="outline" 
+      class="btn-logout"
+      (click)="confirmLogout()"
+    >
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+
+    <!-- Info de la app -->
+    <div class="app-info">
+      <p>Versión 1.0.0</p>
+    </div>
+  </div>
 </ion-content>
