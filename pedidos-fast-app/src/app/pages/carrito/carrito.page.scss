@@ -1,3 +1,13 @@
+/* ----------------------
+   FONDO GENERAL (igual al inicio)
+-----------------------*/
+ion-content {
+  --background: #f5f5f5;
+}
+
+/* ----------------------
+   HEADER (compacto y unificado con el inicio)
+-----------------------*/
 .custom-header {
   background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
   color: white;
@@ -15,6 +25,26 @@
   }
 }
 
+/* Versión compacta — usada en el carrito */
+.custom-header--small {
+  padding: calc(10px + var(--ion-safe-area-top)) 16px 8px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    margin-top: 3px;
+    opacity: 0.95;
+  }
+}
+
+/* ----------------------
+   CART CONTENT
+-----------------------*/
 .cart-content {
   padding: 20px;
 }
@@ -95,6 +125,9 @@
   text-align: center;
 }
 
+/* ----------------------
+   CART SUMMARY
+-----------------------*/
 .cart-summary {
   background: white;
   padding: 20px;
@@ -127,6 +160,9 @@
   height: 50px;
 }
 
+/* ----------------------
+   EMPTY STATE
+-----------------------*/
 .empty-state {
   display: flex;
   flex-direction: column;
