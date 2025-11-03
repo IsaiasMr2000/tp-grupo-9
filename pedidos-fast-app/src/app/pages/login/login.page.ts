@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -6,46 +6,28 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import {
-  IonContent,
-  IonIcon,
-  IonInput,
-  IonButton,
-  IonText,
-  IonSpinner,
-} from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterLink,
-    IonContent,
-    IonIcon,
-    IonInput,
-    IonButton,
-    IonText,
-    IonSpinner,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, IonicModule, RouterLink],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   loginForm: FormGroup;
   isLoading = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-
-  ngOnInit() {}
 
   async onLogin() {
     if (this.loginForm.valid) {
@@ -53,14 +35,12 @@ export class LoginPage implements OnInit {
       this.errorMessage = '';
 
       try {
-        // Aquí iría la lógica de autenticación
         const { email, password } = this.loginForm.value;
+        const success = await this.authService.login(email, password);
 
-        // Simulación de login (reemplazar con tu lógica real)
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        // Si el login es exitoso, navegar al home
-        this.router.navigate(['/home']);
+        if (!success) {
+          this.errorMessage = 'Credenciales inválidas';
+        }
       } catch (error) {
         this.errorMessage =
           'Error al iniciar sesión. Por favor, intente nuevamente.';
