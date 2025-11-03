@@ -3,7 +3,22 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { DataService } from '../../services/data.service';
-import { Restaurant, Category } from '../../models/models';
+
+interface Category {
+  name: string;
+  id?: number | string;
+  icon?: string;
+}
+
+interface Restaurant {
+  id: number;
+  name?: string;
+  category?: string;
+  price?: number;
+  isFavorite?: boolean;
+  rating?: number;
+  image?: string;
+}
 
 @Component({
   selector: 'app-inicio',
@@ -53,7 +68,7 @@ export class InicioPage implements OnInit {
   }
 
   toggleFavorite(restaurant: Restaurant) {
-    this.dataService.toggleFavorite(restaurant.id);
+    this.dataService.toggleFavorite(restaurant.id.toString());
   }
 
   formatPrice(price: number): string {
