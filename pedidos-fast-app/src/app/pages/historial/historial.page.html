@@ -1,11 +1,14 @@
 <ion-header class="ion-no-border">
-  <div class="custom-header">
-    <h2>Historial</h2>
-    <p>Tus pedidos anteriores</p>
-  </div>
+  <ion-toolbar class="header-gradient no-border">
+    <div class="title-wrap" slot="start">
+      <h1>Historial</h1>
+      <p>Tus pedidos anteriores</p>
+    </div>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<!-- Fondo con el mismo color que la pantalla de inicio -->
+<ion-content [fullscreen]="true" class="light-background">
   <div class="history-content" *ngIf="orders.length > 0">
     <div *ngFor="let order of orders" class="history-item">
       <div class="history-header">
@@ -14,7 +17,7 @@
           {{ getStatusText(order.status) }}
         </ion-badge>
       </div>
-      
+
       <h3 class="history-restaurant">{{ order.restaurant }}</h3>
       <p class="history-items">{{ order.items }}</p>
       <p class="history-total">Total: {{ formatPrice(order.total) }}</p>
