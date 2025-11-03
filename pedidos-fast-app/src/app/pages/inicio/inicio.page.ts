@@ -58,7 +58,7 @@ export class InicioPage implements OnInit {
   }
 
   toggleFavorite(restaurant: Restaurant) {
-    this.dataService.toggleFavorite(restaurant.id);
+    this.dataService.toggleFavorite(restaurant.id.toString());
   }
 
   formatPrice(price: number): string {
