@@ -1,4 +1,4 @@
-# 🍕 PedidosFast App - Proyecto Universitario
+# PedidosFast App - Proyecto
 
 ## 👥 Integrantes del Equipo
 - Alejandro Miranda - Dueño del repositorio
@@ -6,7 +6,7 @@
 - Blanca Prieto - Developer  
 - Paz Martinez - Developer
 
-## 🚀 Cómo Empezar
+## Cómo Empezar
 
 ### Prerrequisitos
 - Node.js 16+
