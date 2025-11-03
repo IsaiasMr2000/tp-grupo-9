@@ -1,12 +1,39 @@
+<!-- ===========================
+     HEADER (encabezado superior)
+     =========================== -->
 <ion-header class="ion-no-border">
   <div class="custom-header">
+    <!-- Título principal de la app -->
     <h2>App Sabor Py</h2>
+
+    <!-- Subtítulo descriptivo -->
     <p>Encuentra tu comida favorita</p>
+
+    <!-- ===========================
+         Botón de notificaciones
+         - Muestra una campana en el header
+         - Abre el popover al hacer clic
+       =========================== -->
+    <ion-button
+      fill="clear"
+      class="notif-btn"
+      id="notifBtn"
+      aria-label="Notificaciones"
+    >
+      <ion-icon name="notifications-outline"></ion-icon>
+    </ion-button>
   </div>
 </ion-header>
 
+<!-- ===========================
+     CONTENT (contenido principal)
+     =========================== -->
 <ion-content [fullscreen]="true">
-  <!-- Search Bar -->
+
+  <!-- ===========================
+       Barra de búsqueda
+       - Permite buscar restaurantes o comidas
+     =========================== -->
   <div class="search-container">
     <div class="search-bar">
       <ion-icon name="search-outline"></ion-icon>
@@ -18,7 +45,11 @@
     </div>
   </div>
 
-  <!-- Categories -->
+  <!-- ===========================
+       Categorías
+       - Muestra chips con diferentes tipos de comida
+       - El usuario puede seleccionar una
+     =========================== -->
   <div class="categories-scroll">
     <ion-chip 
       *ngFor="let category of categories"
@@ -31,11 +62,21 @@
     </ion-chip>
   </div>
 
-  <!-- Restaurants List -->
+  <!-- ===========================
+       Lista de restaurantes
+       - Muestra tarjetas con nombre, tipo, tiempo, etc.
+       - Cada tarjeta tiene un botón para marcar favorito
+     =========================== -->
   <div class="restaurants-list">
+
+    <!-- Bucle que recorre los restaurantes filtrados -->
     <div *ngFor="let restaurant of filteredRestaurants" class="restaurant-card">
+      
+      <!-- Imagen o ícono representativo -->
       <div class="restaurant-image">
         <div class="image-emoji">{{ restaurant.image }}</div>
+
+        <!-- Botón de favoritos -->
         <ion-button 
           fill="clear" 
           class="favorite-btn"
@@ -48,6 +89,7 @@
         </ion-button>
       </div>
       
+      <!-- Información del restaurante -->
       <div class="restaurant-info">
         <h3 class="restaurant-name">{{ restaurant.name }}</h3>
         <p class="restaurant-meta">
@@ -60,10 +102,33 @@
       </div>
     </div>
 
-    <!-- Empty State -->
+    <!-- Estado vacío (si no hay resultados en la búsqueda) -->
     <div *ngIf="filteredRestaurants.length === 0" class="empty-state">
       <ion-icon name="restaurant-outline"></ion-icon>
       <p>No se encontraron restaurantes</p>
     </div>
   </div>
 </ion-content>
+
+<!-- ===========================
+     POPOVER DE NOTIFICACIONES
+     - Se muestra al hacer clic en la campana
+     - De momento indica que no hay notificaciones nuevas
+     - Se coloca fuera del <ion-content> (nivel raíz)
+     =========================== -->
+<ion-popover
+  trigger="notifBtn"
+  triggerAction="click"
+  side="bottom"
+  alignment="end"
+>
+  <!-- Contenido interno del popover -->
+  <ng-template>
+    <div class="notifications-popover">
+      <!-- Ícono y texto de estado vacío -->
+      <ion-icon name="notifications-off-outline" class="notif-empty-icon"></ion-icon>
+      <h4>Sin notificaciones</h4>
+      <p>No hay notificaciones nuevas.</p>
+    </div>
+  </ng-template>
+</ion-popover>
