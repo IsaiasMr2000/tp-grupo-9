@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { DataService } from '../../services/data.service';
-import { Restaurant, Category } from '../../models/models';
+import { DataService } from '@services/data.service';
+import { Restaurant, Category } from '@models/models';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule]
+  imports: [CommonModule, FormsModule, IonicModule],
+  providers: [DataService],
 })
 export class InicioPage implements OnInit {
   categories: Category[] = [];
@@ -27,7 +28,7 @@ export class InicioPage implements OnInit {
     this.filteredRestaurants = this.restaurants;
 
     // Suscribirse a cambios en restaurantes (para favoritos)
-    this.dataService.restaurants$.subscribe(restaurants => {
+    this.dataService.restaurants$.subscribe((restaurants: Restaurant[]) => {
       this.restaurants = restaurants;
       this.filterRestaurants();
     });
@@ -46,9 +47,13 @@ export class InicioPage implements OnInit {
 
   filterRestaurants() {
     if (this.searchQuery.trim()) {
-      this.filteredRestaurants = this.dataService.searchRestaurants(this.searchQuery);
+      this.filteredRestaurants = this.dataService.searchRestaurants(
+        this.searchQuery
+      );
     } else {
-      this.filteredRestaurants = this.dataService.getRestaurantsByCategory(this.selectedCategory);
+      this.filteredRestaurants = this.dataService.getRestaurantsByCategory(
+        this.selectedCategory
+      );
     }
   }
 
