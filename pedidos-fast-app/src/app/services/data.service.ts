@@ -8,6 +8,9 @@ import { CartItem, Order, User } from '../models/models';
 export class DataService {
   private cartItems: CartItem[] = [];
   private orders: Order[] = [];
+  
+  // Static team members from README.md
+  // In a production app, this would be fetched from an API
   private users: User[] = [
     {
       id: 1,
